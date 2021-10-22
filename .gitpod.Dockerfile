@@ -29,3 +29,9 @@ RUN wget https://swift.org/builds/swift-5.5-release/ubuntu2004/swift-5.5-RELEASE
     && tar xzf swift-5.5-RELEASE-ubuntu20.04.tar.gz -C ~ \
     && echo "PATH=~/swift-5.5-RELEASE-ubuntu20.04/usr/bin:$PATH" >> ~/.bashrc
     
+RUN git clone https://github.com/vapor/toolbox.git \
+    && cd toolbox \
+    @@ git checkout 18.3.3 \
+    && ~/swift-5.5-RELEASE-ubuntu20.04/usr/bin/swift build -c release --disable-sandbox \
+    && sudo mv .build/release/vapor /usr/local/bin/vapor
+
